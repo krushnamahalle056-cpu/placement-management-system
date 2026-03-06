@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="admin-style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+                body{
+
+        margin:0;
+        font-family:Arial;
+        display:flex;
+
+        }
+
+        /* Sidebar */
+
+        .sidebar{
+
+        width:220px;
+        background:#2c3e50;
+        color:white;
+        height:100vh;
+        padding:20px;
+
+        }
+
+        .sidebar h2{
+
+        text-align:center;
+
+        }
+
+        .sidebar a{
+
+        display:block;
+        color:white;
+        text-decoration:none;
+        padding:10px;
+        margin:10px 0;
+        border-radius:5px;
+
+        }
+
+        .sidebar a:hover{
+
+        background:#34495e;
+        border-left:4px solid #00c3ff;
+
+        }
+
+        /* Main */
+
+        .main{
+
+        flex:1;
+        padding:30px;
+
+        }
+
+        /* Cards */
+
+        .cards{
+
+        display:flex;
+        gap:20px;
+
+        }
+
+        .card{
+
+        background:#f4f4f4;
+        padding:20px;
+        flex:1;
+        text-align:center;
+        border-radius:8px;
+
+        }
+
+        /* Table */
+
+        table{
+
+        width:100%;
+        border-collapse:collapse;
+        margin-top:20px;
+
+        }
+
+        table, th, td{
+
+        border:1px solid #ccc;
+
+        }
+
+        th, td{
+
+        padding:10px;
+        text-align:center;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+        <h2>Admin Panel</h2>
+
+        <a href="#" onclick="showSection('home')">
+        <i class="fa fa-home"></i> Dashboard
+        </a>
+
+        <a href="#" onclick="showSection('students')">
+        <i class="fa fa-user-graduate"></i> Students
+        </a>
+
+        <a href="#" onclick="showSection('recruiters')">
+        <i class="fa fa-building"></i> Recruiters
+        </a>
+
+        <a href="#" onclick="showSection('jobs')">
+        <i class="fa fa-briefcase"></i> Jobs
+        </a>
+
+        <a href="#" onclick="logout()">
+        <i class="fa fa-sign-out"></i> Logout
+        </a>
+
+    </div>
+
+
+    <!-- Main Content -->
+
+    <div class="main">
+
+        <h2>Admin Dashboard</h2>
+        <hr>
+
+
+        <!-- Home -->
+
+        <div id="home">
+
+        <div class="cards">
+
+        <div class="card">
+        <h3>Total Students</h3>
+        <p>120</p>
+        </div>
+
+        <div class="card">
+        <h3>Total Recruiters</h3>
+        <p>15</p>
+        </div>
+
+        <div class="card">
+        <h3>Total Jobs</h3>
+        <p>30</p>
+        </div>
+
+        </div>
+
+        </div>
+
+
+        <!-- Students -->
+
+        <div id="students" style="display:none">
+
+        <h3>Registered Students</h3>
+
+        <table>
+
+        <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Branch</th>
+        </tr>
+
+        <tr>
+        <td>Rahul Sharma</td>
+        <td>rahul@email.com</td>
+        <td>CSE</td>
+        </tr>
+
+        <tr>
+        <td>Priya Patil</td>
+        <td>priya@email.com</td>
+        <td>IT</td>
+        </tr>
+
+        </table>
+
+        </div>
+
+
+        <!-- Recruiters -->
+
+        <div id="recruiters" style="display:none">
+
+        <h3>Recruiters</h3>
+
+        <table>
+
+        <tr>
+        <th>Company</th>
+        <th>Email</th>
+        </tr>
+
+        <tr>
+        <td>TCS</td>
+        <td>hr@tcs.com</td>
+        </tr>
+
+        <tr>
+        <td>Infosys</td>
+        <td>hr@infosys.com</td>
+        </tr>
+
+        </table>
+
+        </div>
+
+
+        <!-- Jobs -->
+
+        <div id="jobs" style="display:none">
+
+            <h3>Posted Jobs</h3>
+
+            <table>
+
+            <tr>
+            <th>Company</th>
+            <th>Role</th>
+            <th>Eligibility</th>
+            </tr>
+
+            <tr>
+            <td>TCS</td>
+            <td>Software Developer</td>
+            <td>CSE / IT</td>
+            </tr>
+
+            <tr>
+            <td>Infosys</td>
+            <td>Web Developer</td>
+            <td>All Branch</td>
+            </tr>
+
+            </table>
+
+        </div>
+
+
+    </div>
+
+
+    <script src="app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Recruiter Dashboard</h2>
+
+    
+
+    <h3>Post New Job</h3>
+
+    <input type="text" id="company" placeholder="Company Name">
+    <input type="text" id="role" placeholder="Job Role">
+
+    <button onclick="postJob()">Post Job</button>
+
+    <h3>Student Applications</h3>
+
+    <table >
+    <tr>
+    <th>Student</th>
+    <th>Role</th>
+    <th>Action</th>
+    </tr>
+
+    <tr>
+    <td>Rahul Sharma</td>
+    <td>Software Engineer</td>
+    <td>
+    <button style="background:green;">Select</button>
+    <button style="background:red;">Reject</button>
+    </td>
+    </tr>
+
+    </table>
+
+
+    <button onclick="location.href='index.html'"> login page</button>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
+ -->
+
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recruiter Dashboard</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f6fb;
+margin:0;
+}
+
+.header{
+background:#4b0082;
+color:white;
+padding:15px;
+text-align:center;
+}
+
+.container{
+padding:20px;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+}
+
+button{
+padding:10px 15px;
+background:#A56EFF;
+color:white;
+border:none;
+cursor:pointer;
+border-radius:5px;
+}
+
+button:hover{
+background:#4b0082;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+th,td{
+border:1px solid #ddd;
+padding:10px;
+text-align:center;
+}
+
+.select{
+background:green;
+}
+
+.reject{
+background:red;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h2>Recruiter Dashboard</h2>
+</div>
+
+<div class="container">
+
+<h3>Post New Job</h3>
+
+<input type="text" placeholder="Company Name">
+
+<input type="text" placeholder="Job Role">
+
+<input type="text" placeholder="Required Skills">
+
+<button>Post Job</button>
+
+<h3>Applied Students</h3>
+
+<table>
+
+<tr>
+<th>Student Name</th>
+<th>Branch</th>
+<th>CGPA</th>
+<th>Action</th>
+</tr>
+
+<tr>
+<td>Rahul Sharma</td>
+<td>Computer</td>
+<td>8.5</td>
+
+<td>
+<button class="select">Select</button>
+<button class="reject">Reject</button>
+</td>
+
+</tr>
+
+<tr>
+<td>Amit Patil</td>
+<td>IT</td>
+<td>8.1</td>
+
+<td>
+<button class="select">Select</button>
+<button class="reject">Reject</button>
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</body>
+</html>

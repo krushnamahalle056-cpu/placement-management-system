@@ -15,87 +15,103 @@
     <style>
 
         body{
-        background:#f4f6f9;
+            background:#f4f6f9;
+            font-family: Arial, sans-serif;
         }
 
         /* Sidebar */
         .sidebar{
-        height:100vh;
-        width:240px;
-        background:#1e1e2f;
-        position:fixed;
-        left:0;
-        top:0;
-        padding-top:20px;
-        color:white;
+            height:100vh;
+            width:240px;
+            background:#1e1e2f;
+            position:fixed;
+            left:0;
+            top:0;
+            padding-top:20px;
+            color:white;
         }
 
         .sidebar h3{
-        text-align:center;
-        margin-bottom:30px;
+            text-align:center;
+            margin-bottom:30px;
         }
 
         /* Menu Links */
         .sidebar a{
-        display:block;
-        padding:12px 20px;
-        color:white;
-        text-decoration:none;
-        border-left:4px solid transparent;
-        transition:0.3s;
+            display:block;
+            padding:12px 20px;
+            color:white;
+            text-decoration:none;
+            border-left:4px solid transparent;
+            transition:0.3s;
         }
 
         .sidebar a:hover{
-        background:#343a40;
-        border-left:4px solid #A56EFF;
-        padding-left:25px;
+            background:#343a40;
+            border-left:4px solid #A56EFF;
+            padding-left:25px;
+        }
+
+        .sidebar a.active{
+            background:#343a40;
+            border-left:4px solid #00bfff;
+            padding-left:25px;
         }
 
         /* Bottom student info */
         .student-info{
-        position:absolute;
-        bottom:20px;
-        width:100%;
-        text-align:center;
-        font-size:14px;
+            position:absolute;
+            bottom:20px;
+            width:100%;
+            text-align:center;
+            font-size:14px;
         }
 
         /* Main Content */
         .main-content{
-        margin-left:240px;
-        padding:30px;
-        height: 750px;
-        
+            margin-left:240px;
+            padding:30px;
+            min-height:100vh;
+        }
+
+        /* Home Cards */
+        .card-container{
+            display:flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .card-container .card{
+            flex: 1 1 150px;
+            padding:20px;
+            border-radius:10px;
+            text-align:center;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
         }
 
         /* Job Cards */
         .job-card{
-        border-radius:10px;
-        box-shadow:0 0 10px rgba(0,0,0,0.1);
-        margin-bottom:20px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
+            margin-bottom:20px;
         }
 
+        /* Status Colors */
         .status-selected{
-        color:green;
-        font-weight:bold;
+            color:green;
+            font-weight:bold;
         }
 
         .status-rejected{
-        color:red;
-        font-weight:bold;
+            color:red;
+            font-weight:bold;
         }
 
         .status-review{
-        color:orange;
-        font-weight:bold;
+            color:orange;
+            font-weight:bold;
         }
-        .card-container{
-        display:flex;
-        gap: 180px;
-        height: 100px;
-        text-align: center;
 
-        }
     </style>
 
 </head>
@@ -107,148 +123,165 @@
 
         <h3>Student Panel</h3>
 
-        <a href="#" onclick="showSection('home')">
-        <i class="fa fa-home"></i> Home
+        <a href="#" onclick="showSection('home')" class="active">
+            <i class="fa fa-home"></i> Home
         </a>
 
-        
         <a href="#" onclick="showSection('jobs')">
-        <i class="fa fa-briefcase"></i> Available Jobs
+            <i class="fa fa-briefcase"></i> Available Jobs
         </a>
 
         <a href="#" onclick="showSection('status')">
-        <i class="fa fa-list"></i> Application Status
+            <i class="fa fa-list"></i> Application Status
         </a>
 
         <a href="#" onclick="showSection('resume')">
-        <i class="fa fa-upload"></i> Upload Resume
+            <i class="fa fa-upload"></i> Upload Resume
+        </a>
+
+        <a href="#" onclick="showSection('interviews')">
+            <i class="fa fa-calendar-check"></i> Interview Schedule
         </a>
 
         <a href="#" onclick="logoutUser()">
-        <i class="fa fa-sign-out"></i> Logout
+            <i class="fa fa-sign-out"></i> Logout
         </a>
 
         <!-- Student Info -->
         <div class="student-info">
             <i class="fa fa-user-circle fa-2x"></i><br>
-            <b>sarthak tayde</b><br>
+            <b>Sarthak Tayde</b><br>
             taydesarthak6w7626@gmail.com
         </div>
 
     </div>
 
+    <!-- Main Content -->
+    <div class="main-content">
 
-   <!-- Main Content -->
-<div class="main-content">
+        <!-- Home -->
+        <div id="home">
+            <h2>Home</h2>
+            <h4>Welcome to Student Dashboard</h4>
+            <p>Here you can view available jobs, track application status, upload your resume, and check interview schedules.</p>
 
-    <h2>Home</h2>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Applied Companies</h3>
+                    <p>5</p>
+                </div>
 
-    <div id="home">
-        <h4>Welcome to Student Dashboard</h4>
-        <p>
-        Here you can view available jobs, track application status and upload your resume.
-        </p>
-        <div class="card-container">
+                <div class="card">
+                    <h3>Shortlisted</h3>
+                    <p>2</p>
+                </div>
 
-        <div class="card">
-        <h3>Applied Companies</h3>
-               <p>5</p>
-        </div>
+                <div class="card">
+                    <h3>Interviews</h3>
+                    <p>1</p>
+                </div>
 
-        <div class="card">
-        <h3>Shortlisted</h3>
-        
-             <p>2</p>
-        </div>
-
-        <div class="card">
-        <h3>Interviews</h3>
-               <p>1</p>
-        </div>
-
-        <div class="card">
-        <h3>Selected</h3>
-        <p>0</p>
-        </div>
-
-        </div>
+                <div class="card">
+                    <h3>Selected</h3>
+                    <p>0</p>
+                </div>
+            </div>
         </div>
 
         <hr>
 
-    <!-- Available Jobs -->
-    <div id="jobs" style="display:none;">
-        <h4>Available Jobs</h4>
+        <!-- Available Jobs -->
+        <div id="jobs" style="display:none;">
+            <h4>Available Jobs</h4>
 
-        <div class="card job-card p-3">
-            <h5>TCS - Software Developer</h5>
-            <p>Eligibility: CSE / IT | CGPA 7+</p>
-            <button class="btn btn-primary">Apply</button>
+            <div class="card job-card p-3">
+                <h5>TCS - Software Developer</h5>
+                <p>Eligibility: CSE / IT | CGPA 7+</p>
+                <button class="btn btn-primary">Apply</button>
+            </div>
+
+            <div class="card job-card p-3">
+                <h5>Infosys - Web Developer</h5>
+                <p>Eligibility: All Branch | Skills: HTML, CSS, JS</p>
+                <button class="btn btn-primary">Apply</button>
+            </div>
         </div>
 
-        <div class="card job-card p-3">
-            <h5>Infosys - Web Developer</h5>
-            <p>Eligibility: All Branch | Skills: HTML, CSS, JS</p>
-            <button class="btn btn-primary">Apply</button>
+        <!-- Application Status -->
+        <div id="status" style="display:none;">
+            <h4>Application Status</h4>
+
+            <table class="table table-bordered">
+                <tr>
+                    <th>Company</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>TCS</td>
+                    <td class="status-review">Under Review</td>
+                </tr>
+                <tr>
+                    <td>Infosys</td>
+                    <td class="status-selected">Selected</td>
+                </tr>
+                <tr>
+                    <td>Wipro</td>
+                    <td class="status-rejected">Rejected</td>
+                </tr>
+            </table>
         </div>
+
+        <!-- Resume Upload -->
+        <div id="resume" style="display:none;">
+            <h4>Upload Resume</h4>
+            <input type="file" class="form-control mb-3">
+            <button class="btn btn-success">Upload</button>
+        </div>
+
+        <!-- Interview Schedule -->
+        <div id="interviews" style="display:none;">
+            <h4>Upcoming Interviews</h4>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Company</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>TCS</td>
+                    <td>10 March 2026</td>
+                    <td>10:00 AM</td>
+                    <td>Scheduled</td>
+                </tr>
+                <tr>
+                    <td>Infosys</td>
+                    <td>15 March 2026</td>
+                    <td>2:00 PM</td>
+                    <td>Scheduled</td>
+                </tr>
+            </table>
+        </div>
+
     </div>
-
-    <!-- Application Status -->
-    <div id="status" style="display:none;">
-        <h4>Application Status</h4>
-
-        <table class="table table-bordered">
-            <tr>
-                <th>Company</th>
-                <th>Status</th>
-            </tr>
-
-            <tr>
-                <td>TCS</td>
-                <td class="status-review">Under Review</td>
-            </tr>
-
-            <tr>
-                <td>Infosys</td>
-                <td class="status-selected">Selected</td>
-            </tr>
-
-            <tr>
-                <td>Wipro</td>
-                <td class="status-rejected">Rejected</td>
-            </tr>
-        </table>
-    </div>
-
-    <!-- Resume Upload -->
-    <div id="resume" style="display:none;">
-        <h4>Upload Resume</h4>
-        <input type="file" class="form-control mb-3">
-        <button class="btn btn-success">Upload</button>
-    </div>
-
-</div>
 
     <script>
-
         function showSection(section){
+            // Hide all sections
+            document.querySelectorAll('#home, #jobs, #status, #resume, #interviews').forEach(el => el.style.display="none");
 
-            document.getElementById("home").style.display="none";
-            document.getElementById("jobs").style.display="none";
-            document.getElementById("status").style.display="none";
-            document.getElementById("resume").style.display="none";
-
+            // Show selected section
             document.getElementById(section).style.display="block";
 
+            // Update active link
+            document.querySelectorAll('.sidebar a').forEach(link => link.classList.remove('active'));
+            const activeLink = document.querySelector(`.sidebar a[onclick="showSection('${section}')"]`);
+            activeLink.classList.add('active');
         }
 
         function logoutUser(){
-
             window.location.href="index.html";
-
         }
-
-
     </script>
 
 </body>

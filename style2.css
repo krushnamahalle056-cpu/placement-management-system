@@ -5,16 +5,20 @@ display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
+
 }
 
 .login-container{
-background:white;
-padding:30px;
-width:300px;
+background:linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+padding:20px;
+width:320px;
 text-align:center;
 border-radius:8px;
 box-shadow:0 0 10px rgba(0,0,0,0.2);
-opacity: 10;
+border: 2px solid white;
+opacity: 5;
+color: white;
+margin: 100px;
 }
 
 input{
@@ -23,10 +27,11 @@ padding:10px;
 margin:10px 0;
 }
 
+
 button{
 width:100%;
 padding:10px;
-background:#A56EFF;
+background:#8756d6;
 color:white;
 border:none;
 cursor:pointer;
@@ -48,7 +53,6 @@ color:blue;
 .input-box{
 position:relative;
 margin:10px 0;
-
 }
 
 .input-box i{
@@ -59,7 +63,7 @@ color:gray;
 }
 
 .input-box input{
-width:90%;
+width:85%;
 padding:10px 10px 10px 35px;
 }
 

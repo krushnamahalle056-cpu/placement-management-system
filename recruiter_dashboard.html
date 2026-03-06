@@ -1,59 +1,12 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h2>Recruiter Dashboard</h2>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    
-
-    <h3>Post New Job</h3>
-
-    <input type="text" id="company" placeholder="Company Name">
-    <input type="text" id="role" placeholder="Job Role">
-
-    <button onclick="postJob()">Post Job</button>
-
-    <h3>Student Applications</h3>
-
-    <table >
-    <tr>
-    <th>Student</th>
-    <th>Role</th>
-    <th>Action</th>
-    </tr>
-
-    <tr>
-    <td>Rahul Sharma</td>
-    <td>Software Engineer</td>
-    <td>
-    <button style="background:green;">Select</button>
-    <button style="background:red;">Reject</button>
-    </td>
-    </tr>
-
-    </table>
-
-
-    <button onclick="location.href='index.html'"> login page</button>
-
-    <script src="app.js"></script>
-</body>
-</html>
-
- -->
-
-
-
- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Recruiter Dashboard</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 
@@ -63,12 +16,66 @@ background:#f4f6fb;
 margin:0;
 }
 
+/* Sidebar */
+
+.sidebar{
+width:300px;
+background:linear-gradient(180deg,#4b0082,#7b2cbf);
+height:100vh;
+color:white;
+padding-top:20px;
+position:fixed;
+left:0;
+top:0;
+}
+
+.sidebar h2{
+text-align:center;
+}
+
+.sidebar a{
+display:flex;
+align-items:center;
+gap:7px;
+color:white;
+padding:12px 15px;
+margin:10px;
+text-decoration:none;
+font-size:16px;
+border-radius:10px;
+height:45px;
+transition:0.3s;
+}
+
+.sidebar a i{
+font-size:18px;
+}
+
+.sidebar a:hover{
+background:#A56EFF;
+box-shadow:0 4px 12px rgba(0,0,0,0.3);
+transform:translateX(5px);
+}
+
+/* Main */
+
+.main{
+margin-left:300px;
+}
+
+/* Header */
+
 .header{
-background:#4b0082;
+background:#ba96d3;
 color:white;
 padding:15px;
 text-align:center;
+position:sticky;
+top:0;
+border-radius:9px;
 }
+
+/* Container */
 
 .container{
 padding:20px;
@@ -79,6 +86,8 @@ width:100%;
 padding:10px;
 margin:10px 0;
 }
+
+/* Buttons */
 
 button{
 padding:10px 15px;
@@ -93,10 +102,21 @@ button:hover{
 background:#4b0082;
 }
 
+.delete{
+background:red;
+}
+
+.delete:hover{
+background:darkred;
+}
+
+/* Tables */
+
 table{
 width:100%;
 border-collapse:collapse;
 margin-top:20px;
+display:none;
 }
 
 th,td{
@@ -105,18 +125,27 @@ padding:10px;
 text-align:center;
 }
 
-.select{
-background:green;
-}
-
-.reject{
-background:red;
-}
-
 </style>
 </head>
 
 <body>
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<h2>Features</h2>
+
+<a href="#"><i class="fa-solid fa-house"></i> Home</a>
+<a href="#postjob"><i class="fa-solid fa-plus"></i> Post Job</a>
+<a href="#jobs"><i class="fa-solid fa-briefcase"></i> Posted Jobs</a>
+<a href="#students"><i class="fa-solid fa-users"></i> Applied Students</a>
+
+</div>
+
+<!-- Main -->
+
+<div class="main">
 
 <div class="header">
 <h2>Recruiter Dashboard</h2>
@@ -124,54 +153,153 @@ background:red;
 
 <div class="container">
 
-<h3>Post New Job</h3>
+<h3 id="postjob">Post New Job</h3>
 
-<input type="text" placeholder="Company Name">
+<input type="text" id="company" placeholder="Company Name">
+<input type="text" id="role" placeholder="Job Role">
+<input type="text" id="skills" placeholder="Required Skills">
 
-<input type="text" placeholder="Job Role">
+<button onclick="postJob()">Post Job</button>
 
-<input type="text" placeholder="Required Skills">
+<h3 id="jobs">Posted Jobs</h3>
 
-<button>Post Job</button>
+<table id="jobTable">
 
-<h3>Applied Students</h3>
+<tr>
+<th>Company</th>
+<th>Role</th>
+<th>Skills</th>
+<th>Action</th>
+</tr>
 
-<table>
+</table>
+
+<h3 id="students">Applied Students</h3>
+
+<table id="studentTable">
 
 <tr>
 <th>Student Name</th>
 <th>Branch</th>
 <th>CGPA</th>
-<th>Action</th>
-</tr>
-
-<tr>
-<td>Rahul Sharma</td>
-<td>Computer</td>
-<td>8.5</td>
-
-<td>
-<button class="select">Select</button>
-<button class="reject">Reject</button>
-</td>
-
-</tr>
-
-<tr>
-<td>Amit Patil</td>
-<td>IT</td>
-<td>8.1</td>
-
-<td>
-<button class="select">Select</button>
-<button class="reject">Reject</button>
-</td>
-
 </tr>
 
 </table>
 
 </div>
+</div>
+
+<script>
+
+/* Post Job */
+
+function postJob(){
+
+let company=document.getElementById("company").value;
+let role=document.getElementById("role").value;
+let skills=document.getElementById("skills").value;
+
+if(company=="" || role=="" || skills==""){
+alert("Please fill all fields");
+return;
+}
+
+let table=document.getElementById("jobTable");
+
+table.style.display="table";
+
+let row=table.insertRow();
+
+row.insertCell(0).innerHTML=company;
+row.insertCell(1).innerHTML=role;
+row.insertCell(2).innerHTML=skills;
+row.insertCell(3).innerHTML='<button class="delete" onclick="deleteJob(this)">Delete</button>';
+
+saveJob(company,role,skills);
+
+/* Clear Inputs */
+
+document.getElementById("company").value="";
+document.getElementById("role").value="";
+document.getElementById("skills").value="";
+
+}
+
+/* Save Job */
+
+function saveJob(company,role,skills){
+
+let jobs=JSON.parse(localStorage.getItem("jobs")) || [];
+
+jobs.push({company,role,skills});
+
+localStorage.setItem("jobs",JSON.stringify(jobs));
+
+}
+
+/* Delete Job */
+
+function deleteJob(btn){
+
+let row=btn.parentNode.parentNode;
+let index=row.rowIndex-1;
+
+row.remove();
+
+let jobs=JSON.parse(localStorage.getItem("jobs")) || [];
+
+jobs.splice(index,1);
+
+localStorage.setItem("jobs",JSON.stringify(jobs));
+
+}
+
+/* Load Data */
+
+window.onload=function(){
+
+let jobs=JSON.parse(localStorage.getItem("jobs")) || [];
+
+let table=document.getElementById("jobTable");
+
+if(jobs.length>0){
+table.style.display="table";
+}
+
+jobs.forEach(job => {
+
+let row=table.insertRow();
+
+row.insertCell(0).innerHTML=job.company;
+row.insertCell(1).innerHTML=job.role;
+row.insertCell(2).innerHTML=job.skills;
+row.insertCell(3).innerHTML='<button class="delete" onclick="deleteJob(this)">Delete</button>';
+
+});
+
+/* Load Students */
+
+let students=JSON.parse(localStorage.getItem("students")) || [];
+
+let studentTable=document.getElementById("studentTable");
+
+if(students.length>0){
+studentTable.style.display="table";
+}
+
+students.forEach(student => {
+
+let row=studentTable.insertRow();
+
+row.insertCell(0).innerHTML=student.name;
+row.insertCell(1).innerHTML=student.branch;
+row.insertCell(2).innerHTML=student.cgpa;
+
+});
+
+}
+
+</script>
 
 </body>
 </html>

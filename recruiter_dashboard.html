@@ -3,302 +3,220 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Recruiter Dashboard</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-
 body{
-font-family:Arial;
-background:#f4f6fb;
-margin:0;
+    font-family: Arial;
+    background: #f4f6fb;
+    margin: 0;
 }
 
 /* Sidebar */
-
 .sidebar{
-width:300px;
-background:linear-gradient(180deg,#4b0082,#7b2cbf);
-height:100vh;
-color:white;
-padding-top:20px;
-position:fixed;
-left:0;
-top:0;
+    width: 300px;
+    background: linear-gradient(180deg,#4b0082,#7b2cbf);
+    height: 100vh;
+    color: white;
+    padding-top: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
 }
-
-.sidebar h2{
-text-align:center;
-}
-
+.sidebar h2{text-align:center;}
 .sidebar a{
-display:flex;
-align-items:center;
-gap:7px;
-color:white;
-padding:12px 15px;
-margin:10px;
-text-decoration:none;
-font-size:16px;
-border-radius:10px;
-height:45px;
-transition:0.3s;
+    display:flex;
+    align-items:center;
+    gap:7px;
+    color:white;
+    padding:12px 15px;
+    margin:10px;
+    text-decoration:none;
+    font-size:16px;
+    border-radius:10px;
+    height:45px;
+    transition:0.3s;
 }
-
-.sidebar a i{
-font-size:18px;
-}
-
+.sidebar a i{font-size:18px;}
 .sidebar a:hover{
-background:#A56EFF;
-box-shadow:0 4px 12px rgba(0,0,0,0.3);
-transform:translateX(5px);
+    background:#A56EFF;
+    box-shadow:0 4px 12px rgba(0,0,0,0.3);
+    transform:translateX(5px);
 }
 
 /* Main */
-
-.main{
-margin-left:300px;
-}
-
-/* Header */
-
+.main{margin-left:300px;}
 .header{
-background:#ba96d3;
-color:white;
-padding:15px;
-text-align:center;
-position:sticky;
-top:0;
-border-radius:9px;
+    background:#ba96d3;
+    color:white;
+    padding:15px;
+    text-align:center;
+    position:sticky;
+    top:0;
+    border-radius:9px;
 }
-
-/* Container */
-
-.container{
-padding:20px;
-}
-
+.container{padding:20px;}
 input{
-width:100%;
-padding:10px;
-margin:10px 0;
+    width:100%;
+    padding:10px;
+    margin:10px 0;
 }
-
-/* Buttons */
-
 button{
-padding:10px 15px;
-background:#A56EFF;
-color:white;
-border:none;
-cursor:pointer;
-border-radius:5px;
+    padding:10px 15px;
+    background:#A56EFF;
+    color:white;
+    border:none;
+    cursor:pointer;
+    border-radius:5px;
 }
-
-button:hover{
-background:#4b0082;
-}
-
-.delete{
-background:red;
-}
-
-.delete:hover{
-background:darkred;
-}
-
-/* Tables */
-
+button:hover{background:#4b0082;}
+.delete{background:red;}
+.delete:hover{background:darkred;}
 table{
-width:100%;
-border-collapse:collapse;
-margin-top:20px;
-display:none;
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+    display:none;
 }
-
 th,td{
-border:1px solid #ddd;
-padding:10px;
-text-align:center;
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
 }
-
 </style>
 </head>
 
 <body>
 
 <!-- Sidebar -->
-
 <div class="sidebar">
-
-<h2>Features</h2>
-
-<a href="#"><i class="fa-solid fa-house"></i> Home</a>
-<a href="#postjob"><i class="fa-solid fa-plus"></i> Post Job</a>
-<a href="#jobs"><i class="fa-solid fa-briefcase"></i> Posted Jobs</a>
-<a href="#students"><i class="fa-solid fa-users"></i> Applied Students</a>
-
+    <h2>Features</h2>
+    <a href="#" onclick="showSection('postjob')"><i class="fa-solid fa-plus"></i> Post Job</a>
+    <a href="#" onclick="showSection('jobs')"><i class="fa-solid fa-briefcase"></i> Jobs</a>
+    <a href="#" onclick="showSection('students')"><i class="fa-solid fa-user-graduate"></i> Students</a>
+    <a href="#" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
 </div>
 
 <!-- Main -->
-
 <div class="main">
+    <div class="header"><h2>Recruiter Dashboard</h2></div>
 
-<div class="header">
-<h2>Recruiter Dashboard</h2>
-</div>
+    <div class="container">
+        <!-- Post Job Section -->
+        <div id="postjob">
+            <h3>Post New Job</h3>
+            <input type="text" id="company" placeholder="Company Name">
+            <input type="text" id="role" placeholder="Job Role">
+            <input type="text" id="skills" placeholder="Required Skills">
+            <button onclick="postJob()">Post Job</button>
+        </div>
 
-<div class="container">
+        <!-- Jobs Section -->
+        <div id="jobs">
+            <h3>Posted Jobs</h3>
+            <table id="jobTable">
+                <tr>
+                    <th>Company</th>
+                    <th>Role</th>
+                    <th>Skills</th>
+                    <th>Action</th>
+                </tr>
+            </table>
+        </div>
 
-<h3 id="postjob">Post New Job</h3>
-
-<input type="text" id="company" placeholder="Company Name">
-<input type="text" id="role" placeholder="Job Role">
-<input type="text" id="skills" placeholder="Required Skills">
-
-<button onclick="postJob()">Post Job</button>
-
-<h3 id="jobs">Posted Jobs</h3>
-
-<table id="jobTable">
-
-<tr>
-<th>Company</th>
-<th>Role</th>
-<th>Skills</th>
-<th>Action</th>
-</tr>
-
-</table>
-
-<h3 id="students">Applied Students</h3>
-
-<table id="studentTable">
-
-<tr>
-<th>Student Name</th>
-<th>Branch</th>
-<th>CGPA</th>
-</tr>
-
-</table>
-
-</div>
+        <!-- Students Section -->
+        <div id="students">
+            <h3>Applied Students</h3>
+            <table id="studentTable">
+                <tr>
+                    <th>Student Name</th>
+                    <th>Branch</th>
+                    <th>CGPA</th>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>
 
 <script>
+// Show section
+function showSection(section){
+    const sections = ['postjob','jobs','students'];
+    sections.forEach(sec => document.getElementById(sec).style.display='none');
+    document.getElementById(section).style.display='block';
+}
 
-/* Post Job */
+// Logout
+function logout(){ window.location.href='index.html'; }
 
+// Post Job
 function postJob(){
+    let company = document.getElementById("company").value;
+    let role = document.getElementById("role").value;
+    let skills = document.getElementById("skills").value;
 
-let company=document.getElementById("company").value;
-let role=document.getElementById("role").value;
-let skills=document.getElementById("skills").value;
+    if(!company || !role || !skills){ alert("Please fill all fields"); return; }
 
-if(company=="" || role=="" || skills==""){
-alert("Please fill all fields");
-return;
+    let table = document.getElementById("jobTable");
+    table.style.display="table";
+
+    let row = table.insertRow();
+    row.insertCell(0).innerHTML = company;
+    row.insertCell(1).innerHTML = role;
+    row.insertCell(2).innerHTML = skills;
+    row.insertCell(3).innerHTML = '<button class="delete" onclick="deleteJob(this)">Delete</button>';
+
+    saveJob(company,role,skills);
+
+    document.getElementById("company").value="";
+    document.getElementById("role").value="";
+    document.getElementById("skills").value="";
 }
 
-let table=document.getElementById("jobTable");
-
-table.style.display="table";
-
-let row=table.insertRow();
-
-row.insertCell(0).innerHTML=company;
-row.insertCell(1).innerHTML=role;
-row.insertCell(2).innerHTML=skills;
-row.insertCell(3).innerHTML='<button class="delete" onclick="deleteJob(this)">Delete</button>';
-
-saveJob(company,role,skills);
-
-/* Clear Inputs */
-
-document.getElementById("company").value="";
-document.getElementById("role").value="";
-document.getElementById("skills").value="";
-
-}
-
-/* Save Job */
-
+// Save Job
 function saveJob(company,role,skills){
-
-let jobs=JSON.parse(localStorage.getItem("jobs")) || [];
-
-jobs.push({company,role,skills});
-
-localStorage.setItem("jobs",JSON.stringify(jobs));
-
+    let jobs = JSON.parse(localStorage.getItem("jobs")) || [];
+    jobs.push({company,role,skills});
+    localStorage.setItem("jobs",JSON.stringify(jobs));
 }
 
-/* Delete Job */
-
+// Delete Job
 function deleteJob(btn){
-
-let row=btn.parentNode.parentNode;
-let index=row.rowIndex-1;
-
-row.remove();
-
-let jobs=JSON.parse(localStorage.getItem("jobs")) || [];
-
-jobs.splice(index,1);
-
-localStorage.setItem("jobs",JSON.stringify(jobs));
-
+    let row = btn.parentNode.parentNode;
+    let index = row.rowIndex-1;
+    row.remove();
+    let jobs = JSON.parse(localStorage.getItem("jobs")) || [];
+    jobs.splice(index,1);
+    localStorage.setItem("jobs",JSON.stringify(jobs));
 }
 
-/* Load Data */
+// Load data on page load
+window.onload = function(){
+    showSection('postjob');
 
-window.onload=function(){
+    let jobs = JSON.parse(localStorage.getItem("jobs")) || [];
+    let table = document.getElementById("jobTable");
+    if(jobs.length>0) table.style.display="table";
+    jobs.forEach(job=>{
+        let row = table.insertRow();
+        row.insertCell(0).innerHTML = job.company;
+        row.insertCell(1).innerHTML = job.role;
+        row.insertCell(2).innerHTML = job.skills;
+        row.insertCell(3).innerHTML = '<button class="delete" onclick="deleteJob(this)">Delete</button>';
+    });
 
-let jobs=JSON.parse(localStorage.getItem("jobs")) || [];
-
-let table=document.getElementById("jobTable");
-
-if(jobs.length>0){
-table.style.display="table";
+    let students = JSON.parse(localStorage.getItem("students")) || [];
+    let studentTable = document.getElementById("studentTable");
+    if(students.length>0) studentTable.style.display="table";
+    students.forEach(student=>{
+        let row = studentTable.insertRow();
+        row.insertCell(0).innerHTML = student.name;
+        row.insertCell(1).innerHTML = student.branch;
+        row.insertCell(2).innerHTML = student.cgpa;
+    });
 }
-
-jobs.forEach(job => {
-
-let row=table.insertRow();
-
-row.insertCell(0).innerHTML=job.company;
-row.insertCell(1).innerHTML=job.role;
-row.insertCell(2).innerHTML=job.skills;
-row.insertCell(3).innerHTML='<button class="delete" onclick="deleteJob(this)">Delete</button>';
-
-});
-
-/* Load Students */
-
-let students=JSON.parse(localStorage.getItem("students")) || [];
-
-let studentTable=document.getElementById("studentTable");
-
-if(students.length>0){
-studentTable.style.display="table";
-}
-
-students.forEach(student => {
-
-let row=studentTable.insertRow();
-
-row.insertCell(0).innerHTML=student.name;
-row.insertCell(1).innerHTML=student.branch;
-row.insertCell(2).innerHTML=student.cgpa;
-
-});
-
-}
-
 </script>
 
 </body>

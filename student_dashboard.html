@@ -64,6 +64,8 @@
         .main-content{
         margin-left:240px;
         padding:30px;
+        height: 750px;
+        
         }
 
         /* Job Cards */
@@ -87,7 +89,13 @@
         color:orange;
         font-weight:bold;
         }
+        .card-container{
+        display:flex;
+        gap: 180px;
+        height: 100px;
+        text-align: center;
 
+        }
     </style>
 
 </head>
@@ -103,10 +111,7 @@
         <i class="fa fa-home"></i> Home
         </a>
 
-        <a href="#" onclick="showSection('jobs')">
-        <i class="fa fa-briefcase"></i> Available Jobs
-        </a>
-
+        
         <a href="#" onclick="showSection('jobs')">
         <i class="fa fa-briefcase"></i> Available Jobs
         </a>
@@ -126,95 +131,103 @@
         <!-- Student Info -->
         <div class="student-info">
             <i class="fa fa-user-circle fa-2x"></i><br>
-            <b>Rahul Sharma</b><br>
-            rahul@email.com
+            <b>sarthak tayde</b><br>
+            taydesarthak6w7626@gmail.com
         </div>
 
     </div>
 
 
-    <!-- Main Content -->
-    <div class="main-content">
-        <H2>Home</H2>
-        <div id="home">
+   <!-- Main Content -->
+<div class="main-content">
 
-            <h4>Welcome to Student Dashboard</h4>
+    <h2>Home</h2>
 
-            <p>
-            Here you can view available jobs, track application status and upload your resume.
-            </p>
+    <div id="home">
+        <h4>Welcome to Student Dashboard</h4>
+        <p>
+        Here you can view available jobs, track application status and upload your resume.
+        </p>
+        <div class="card-container">
 
+        <div class="card">
+        <h3>Applied Companies</h3>
+               <p>5</p>
         </div>
 
-        <h2>Student Dashboard</h2>
+        <div class="card">
+        <h3>Shortlisted</h3>
+        
+             <p>2</p>
+        </div>
+
+        <div class="card">
+        <h3>Interviews</h3>
+               <p>1</p>
+        </div>
+
+        <div class="card">
+        <h3>Selected</h3>
+        <p>0</p>
+        </div>
+
+        </div>
+        </div>
+
         <hr>
 
-        <!-- Available Jobs -->
-        <div id="jobs">
+    <!-- Available Jobs -->
+    <div id="jobs" style="display:none;">
+        <h4>Available Jobs</h4>
 
-            <h4>Available Jobs</h4>
-
-            <div class="card job-card p-3">
-                <h5>TCS - Software Developer</h5>
-                <p>Eligibility: CSE / IT | CGPA 7+</p>
-                <button class="btn btn-primary">Apply</button>
-            </div>
-
-            <div class="card job-card p-3">
-                <h5>Infosys - Web Developer</h5>
-                <p>Eligibility: All Branch | Skills: HTML, CSS, JS</p>
-                <button class="btn btn-primary">Apply</button>
-            </div>
-
+        <div class="card job-card p-3">
+            <h5>TCS - Software Developer</h5>
+            <p>Eligibility: CSE / IT | CGPA 7+</p>
+            <button class="btn btn-primary">Apply</button>
         </div>
 
-
-        <!-- Application Status -->
-        <div id="status" style="display:none;">
-
-            <h4>Application Status</h4>
-
-            <table class="table table-bordered">
-
-            <tr>
-            <th>Company</th>
-            <th>Status</th>
-            </tr>
-
-            <tr>
-            <td>TCS</td>
-            <td class="status-review">Under Review</td>
-            </tr>
-
-            <tr>
-            <td>Infosys</td>
-            <td class="status-selected">Selected</td>
-            </tr>
-
-            <tr>
-            <td>Wipro</td>
-            <td class="status-rejected">Rejected</td>
-            </tr>
-
-            </table>
-
+        <div class="card job-card p-3">
+            <h5>Infosys - Web Developer</h5>
+            <p>Eligibility: All Branch | Skills: HTML, CSS, JS</p>
+            <button class="btn btn-primary">Apply</button>
         </div>
+    </div>
 
+    <!-- Application Status -->
+    <div id="status" style="display:none;">
+        <h4>Application Status</h4>
+
+        <table class="table table-bordered">
+            <tr>
+                <th>Company</th>
+                <th>Status</th>
+            </tr>
+
+            <tr>
+                <td>TCS</td>
+                <td class="status-review">Under Review</td>
+            </tr>
+
+            <tr>
+                <td>Infosys</td>
+                <td class="status-selected">Selected</td>
+            </tr>
+
+            <tr>
+                <td>Wipro</td>
+                <td class="status-rejected">Rejected</td>
+            </tr>
+        </table>
     </div>
 
     <!-- Resume Upload -->
     <div id="resume" style="display:none;">
-
         <h4>Upload Resume</h4>
-
         <input type="file" class="form-control mb-3">
-
         <button class="btn btn-success">Upload</button>
-
     </div>
 
-  
-
+</div>
 
     <script>
 
